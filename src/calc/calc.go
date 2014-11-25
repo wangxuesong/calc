@@ -4,5 +4,10 @@ import "os"
 import "read"
 
 func main(){
-    fmt.Println("test ",);
+    args := read.Checkinput(os.Args)
+    if "" == args {
+        fmt.Println("usage: ./calc <expression>")
+        return
+    }
+    fmt.Println("input string: ",args);
 }
