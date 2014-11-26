@@ -2,6 +2,7 @@ package main
 import "fmt"
 import "os"
 import "read"
+import "eval"
 
 func main(){
     args := read.Checkinput(os.Args)
@@ -10,4 +11,11 @@ func main(){
         return
     }
     fmt.Println("input string: ",args);
+
+    var ret int = eval.Mapping(args)
+    if (-1 == ret){
+        fmt.Println("please try again!")
+        return
+    }
+    fmt.Println(os.Args[1],"=",ret)
 }
