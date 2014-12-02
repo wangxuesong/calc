@@ -22,5 +22,5 @@ func main() {
 		fmt.Println("please try again!")
 		return
 	}
-	fmt.Println(os.Args[1], "=", ret)
+	fmt.Println(args, "=", ret)
 }
