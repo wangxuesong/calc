@@ -12,8 +12,12 @@ func main() {
 		return
 	}
 	fmt.Println("input string: ", args)
-
-	var ret int = eval.Mapping(args)
+	operator, operand := eval.Splitinput(args)
+	if operator == "" {
+		fmt.Println("can't get valid input. please check your input!")
+		return
+	}
+	var ret int = eval.Mapping(operator, operand)
 	if -1 == ret {
 		fmt.Println("please try again!")
 		return

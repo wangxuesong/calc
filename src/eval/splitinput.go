@@ -11,7 +11,9 @@ func Splitinput(inputstr string) (operator string, operandlist []string) {
 		operator = "-"
 	}
 	if len(operandlist) < 2 {
-		fmt.Println("Please check your input")
+		operator = ""
+		fmt.Println("Please check your input", operator, len(operator), " ", len(operandlist))
+		return
 	}
 	fmt.Println("operand: ", operandlist[0], operandlist[1], "\noperator: ", operator)
 	return
