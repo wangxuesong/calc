@@ -8,7 +8,7 @@ func Mapping(operator string, operand []string) int {
 	opd2, err2 := strconv.Atoi(operand[1])
 	if err1 != nil || err2 != nil {
 		fmt.Println("strconv.Atoi error!")
-		return -1
+		return -127
 	}
 	var result int
 	switch operator {
@@ -18,7 +18,7 @@ func Mapping(operator string, operand []string) int {
 		result = opd1 - opd2
 	default:
 		fmt.Println("unknown expression!")
-		result = -1
+		result = -127
 	}
 	return result
 }
