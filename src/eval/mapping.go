@@ -2,15 +2,17 @@ package eval
 
 import "fmt"
 import "strconv"
+import "errors"
 
-func Mapping(operator string, operand []string) int {
+func Mapping(operator string, operand []string) (result int, err error) {
 	opd1, err1 := strconv.Atoi(operand[0])
 	opd2, err2 := strconv.Atoi(operand[1])
 	if err1 != nil || err2 != nil {
 		fmt.Println("strconv.Atoi error!")
-		return -127
+		err = errors.New("strconv.Atoi error")
+		return
 	}
-	var result int
+	//var result int
 	switch operator {
 	case "+":
 		result = opd1 + opd2
@@ -18,7 +20,7 @@ func Mapping(operator string, operand []string) int {
 		result = opd1 - opd2
 	default:
 		fmt.Println("unknown expression!")
-		result = -127
+		err = errors.New("unknown expression")
 	}
-	return result
+	return
 }

@@ -2,8 +2,9 @@ package read
 
 import "fmt"
 import "strings"
+import "errors"
 
-func Checkinput(Args string) string {
+func Checkinput(Args string) (exp string, err error) {
 	//	if len(Args) == 2 {
 	//		fmt.Printf("please input one expression!")
 	//		return ""
@@ -14,12 +15,13 @@ func Checkinput(Args string) string {
 	//	}
 	if Args == "" {
 		fmt.Printf("please input one expression!")
-		return ""
+		err = errors.New("expression is empty")
+		return Args, err
 	}
-	var exp string
+	//var exp string
 	str := strings.Fields(Args)
 	for i := 0; i < len(str); i++ {
 		exp = strings.Join(str[0:], "")
 	}
-	return exp
+	return exp, err
 }

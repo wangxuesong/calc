@@ -4,7 +4,7 @@ import "fmt"
 import "bufio"
 import "os"
 
-func Readinput() string {
+func Readinput() (string, error) {
 	//	fmt.Println("Please input expression:")
 	inputstr := bufio.NewReader(os.Stdin)
 	s, err := inputstr.ReadString('\n')
@@ -12,5 +12,5 @@ func Readinput() string {
 		fmt.Println("inputstr.ReadString error")
 	}
 
-	return s
+	return s, err
 }
