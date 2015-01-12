@@ -4,6 +4,26 @@ import "fmt"
 import "strconv"
 import "errors"
 
+type operation interface {
+	Getresult(opd1 int, opd2 int) (res int, err error)
+}
+
+type operationAdd struct {
+	operator string
+}
+
+func (this *operationAdd) Getresult(opd1 int, opd2 int) (res int, err error) {
+	return opd1 + opd2, err
+}
+
+type operationSub struct {
+	operator string
+}
+
+func (this *operationSub) Getresult(opd1 int, opd2 int) (res int, err error) {
+	return opd1 - opd2, err
+}
+
 func Mapping(operator string, operand []string) (result int, err error) {
 	opd1, err1 := strconv.Atoi(operand[0])
 	opd2, err2 := strconv.Atoi(operand[1])
@@ -12,15 +32,29 @@ func Mapping(operator string, operand []string) (result int, err error) {
 		err = errors.New("strconv.Atoi error")
 		return
 	}
-	//var result int
+
+	var op operation
 	switch operator {
 	case "+":
-		result = opd1 + opd2
+		op = new(operationAdd)
 	case "-":
-		result = opd1 - opd2
+		op = new(operationSub)
 	default:
 		fmt.Println("unknown expression!")
 		err = errors.New("unknown expression")
 	}
+	result, err = op.Getresult(opd1, opd2)
+	/*
+		//var result int
+		switch operator {
+		case "+":
+			result = opd1 + opd2
+		case "-":
+			result = opd1 - opd2
+		default:
+			fmt.Println("unknown expression!")
+			err = errors.New("unknown expression")
+		}
+	*/
 	return
 }
