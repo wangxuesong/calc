@@ -26,3 +26,14 @@ func TestMapping2(t *testing.T) {
 //		t.Errorf("eval.Mapping(\"testttt\") failed. Get %d, except -1", ret)
 //	}
 //}
+
+func TestExecute(t *testing.T) {
+	var root = operationAdd{}
+	ret, err := Execute(root)
+	if err != nil {
+		t.Error("Execute return error")
+	}
+	if ret != 2 {
+		t.Errorf("Expect %d, Actual %d", 2, ret)
+	}
+}
