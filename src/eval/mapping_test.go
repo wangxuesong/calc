@@ -28,7 +28,7 @@ func TestMapping2(t *testing.T) {
 //}
 
 func TestExecute(t *testing.T) {
-	var root = &operationAdd{}
+	var root = &operationAdd{operator: "+", op1: 1, op2: 1}
 	ret, err := Execute(root)
 	if err != nil {
 		t.Fatal("Execute return error")
