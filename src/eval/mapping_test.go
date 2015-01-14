@@ -28,10 +28,10 @@ func TestMapping2(t *testing.T) {
 //}
 
 func TestExecute(t *testing.T) {
-	var root = operationAdd{}
+	var root = &operationAdd{}
 	ret, err := Execute(root)
 	if err != nil {
-		t.Error("Execute return error")
+		t.Fatal("Execute return error")
 	}
 	if ret != 2 {
 		t.Errorf("Expect %d, Actual %d", 2, ret)
