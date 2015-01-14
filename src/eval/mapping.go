@@ -60,8 +60,6 @@ func Mapping(operator string, operand []string) (result int, err error) {
 }
 
 func Execute(root operation) (result int, err error) {
-	//err = errors.New("")
-	err = nil
-	result = 2
-	return
+
+	return root.Getresult(1, 1)
 }
